@@ -22,7 +22,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: master
-
+      - name: Fix Entrypoint Permissions
+       run: |
+        chmod +x .github/actions/*/entrypoint.py 2>/dev/null || true
+        chmod +x action/entrypoint.py 2>/dev/null || true
       - name: Build with Buildozer
         uses: ./master # REPLACE WITH ArtemSBulgakov/buildozer-action@v1
         id: buildozer
